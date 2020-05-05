@@ -1,15 +1,11 @@
 const express = require("express");
 const helmet = require("helmet");
+const projectsRouter = require("../projects/projects-router");
 
 const server = express();
 
 server.use(express.json());
 server.use(helmet());
 
-server.use("/", (req, res) => {
-  res.json({
-    message: "This is a test"
-  });
-});
-
+server.use("/projects", projectsRouter);
 module.exports = server;

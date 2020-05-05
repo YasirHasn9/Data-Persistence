@@ -10,6 +10,9 @@ module.exports = {
     migrations: {
       directory: "./data/migrations"
     },
+    seeds: {
+      directory: "./data/seeds"
+    },
     // needed when using foreign keys
     poo: {
       afterCreate: (conn, done) => {
