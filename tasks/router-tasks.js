@@ -13,6 +13,15 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const tasks = await Tasks.findByProject(id);
+    res.json(tasks);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.post("/", async (req, res, next) => {
   try {

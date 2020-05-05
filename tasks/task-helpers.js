@@ -1,7 +1,10 @@
 const db = require("../data/config");
 
-function find() {
-  return db("tasks").select("*");
+async function find() {
+  const task = await db("tasks")
+    .join("projects", "projects.id", "tasks.project_id")
+    .select();
+  return task;
 }
 
 async function add(data) {
@@ -11,8 +14,22 @@ async function add(data) {
     .select()
     .first();
 }
+async function findByProject(project_id) {
+  const tasks = await db("tasks")
+    .join("projects", "projects.id", "tasks.project_id")
+    .where({ project_id })
+    .select(
+      "tasks.description",
+      "tasks.notes",
+      "tasks.completed",
+      "projects.name",
+      "projects.description as project_description"
+    );
+  return tasks;
+}
 
 module.exports = {
   find,
-  add
+  add,
+  findByProject
 };
