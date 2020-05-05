@@ -4,7 +4,8 @@
   "description": "## Description",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,10 @@
   },
   "homepage": "https://github.com/YasirHasn9/Data-Persistence#readme",
   "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
     "knex": "^0.21.1",
+    "nodemon": "^2.0.3",
     "sqlite3": "^4.2.0"
   }
 }
