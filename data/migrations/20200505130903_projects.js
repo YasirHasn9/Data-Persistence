@@ -30,6 +30,23 @@ exports.up = async function(knex) {
       .references("id")
       .inTable("projects");
   });
+  await knex.schema.createTable("project_resource", tbl => {
+    tbl
+      .integer("project_id")
+      .notNullable()
+      .unsigned()
+      .references("id")
+      .inTable("projects");
+
+    tbl
+      .integer("resource_id")
+      .notNullable()
+      .unsigned()
+      .references("id")
+      .inTable("resource");
+
+    tbl.primary(["project_id", "resource_id"]);
+  });
 };
 
 exports.down = async function(knex) {
